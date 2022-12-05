@@ -7,6 +7,7 @@
 #include<complex>
 #include<ctime>
 #include<chrono>
+#pragma warning(disable : 4996);
 typedef std::complex<double> base;
 # define PI           3.14159265358979323846
 
@@ -78,8 +79,8 @@ int main()
     time_t sec = time(NULL);
     tm* timeinfo = localtime(&sec);
   
-    std::string new_name = "primes--" + std::to_string(2000+timeinfo->tm_year - 100) +"-" + std::to_string(timeinfo->tm_mon) +"-"+ std::to_string(timeinfo->tm_mday) + "--"
-        + std::to_string(timeinfo->tm_hour) +"-"+ std::to_string(timeinfo->tm_min)+"-" + std::to_string(timeinfo->tm_sec) + +".txt";
+    std::string new_name = "primes--" + std::to_string(2000+timeinfo->tm_year - 100) +"-" + std::to_string(timeinfo->tm_mon+1) +"-"+ std::to_string(timeinfo->tm_mday) + "--"
+        + std::to_string(timeinfo->tm_hour) +"-"+ std::to_string(timeinfo->tm_min)+"-" + std::to_string(timeinfo->tm_sec) +".txt";
     file.open(new_name);
     std::vector<int> num;
     std::thread progress;
@@ -297,31 +298,8 @@ std::vector<int>mod_pow(std::vector<int> n, std::vector<int> deg, std::vector<in
     }
 
 }
-//std::vector<int> vec_pow(std::vector<int> num, std::vector<int> dig)
-//{
-//    std::vector<int> res = { 1 };
-//    std::vector<int> n = { 2 };
-//    while (!(dig.size() == 1 && dig[0] == 0))
-//    {
-//        if (mod(dig, n)[0] == 1)
-//        {
-//            res = res * num;
-//        }
-//        num = num * num;
-//        dig = dig / n;
-//    }
-//    return res;
-//}
 std::vector<int> operator / (std::vector<int> num1, std::vector<int>num2)
 {
-    /*std::vector<int> Q={0};
-    std::vector<int> R = num1;
-    while (R > num2)
-    {
-        R = R - num2;
-        Q = Q + 1;
-    }
-    return Q;*/
     if (num1 < num2) return std::vector<int>{0};
     std::vector<int> tmp;
     int k = 0;
@@ -463,7 +441,6 @@ std::vector<int> operator *(std::vector<int> num, int dig)
     {
         res.erase(res.begin());
     }
-    //std::reverse(res.num.begin(), res.num.end());
     return res;
 }
 std::vector<int> operator + (std::vector<int> num1, int dig)

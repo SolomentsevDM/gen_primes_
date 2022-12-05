@@ -10,7 +10,6 @@
 #pragma warning(disable : 4996);
 typedef std::complex<double> base;
 # define PI           3.14159265358979323846
-
 std::vector<int>mod_pow(std::vector<int> n, std::vector<int> deg, std::vector<int> m);
 std::vector<int> vec_pow(std::vector<int> num, std::vector<int> dig);
 std::vector<int> mod(std::vector<int> num1, std::vector<int>num2);
